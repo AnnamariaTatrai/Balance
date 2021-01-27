@@ -1,0 +1,3 @@
+ANAvars <- c("ppltrst", "pplfair", "pplhlp", "trstprl", "trstlgl", "trstplc", "trstplt", "trstprt", "trstep", "trstun",
+            "vote", "stflife", "stfeco", "stfgov", "stfdem", "happy", "health", "hhmmb", "gndr", "agea", "yrbrn", "eisced")
+
