@@ -1,0 +1,11 @@
+#this is a new r ccode file in order tro try pushing it toi the balance repo
+library(tidyverse) #for everything else :)
+
+#library(credentials)
+#git_credential_ask('https://github.com/AnnamariaTatrai/Balance.git')
+
+
+install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "anel-li", user.email = "e.linek@web.de")
