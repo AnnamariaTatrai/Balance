@@ -1,16 +1,7 @@
-setwd
-CNTRYlistv2 <- c("AT","BE","BG","CH","CY",
-                 "CZ","DE","DK","EE","ES",
-                 "FI","FR","GB","HU","IE",
-                 "IT","LT","NL","NO","PL",
-                 "PT","SE","SI","SK","UA")
-#rect(2007.8,0,2013.2,0.4,border=F,col="grey87")
-colors <- c("blue","blue4","red4","azure4","burlywood4",
-            "chartreuse3","coral","coral4","darkcyan","darkgrey",
-            "darkred","darkviolet","black","red","orchid",
-            "orchid4","gray36","olivedrab", "darkorange4","wheat",
-            "yellow3","grey64","greenyellow","green","gold2")
+library(tidyverse)
+setwd("C:/Panni/IPSDS/_BalanceThesis/Balance/data/plots")
 
+#we prepared a county list taking region into account
 
 CNTRYlistv2 <- c("FI","SE","NO","DK",
                  "FR","GB","IE","BE","NL",
@@ -18,9 +9,6 @@ CNTRYlistv2 <- c("FI","SE","NO","DK",
                  "PL","HU","SK","CZ","SI",
                  "CH","DE","AT",
                  "ES","PT","IT","CY")
-
-
-
 colors <- c("deepskyblue1","navyblue","royalblue1","skyblue",
             "yellowgreen","green","darkgreen","lawngreen","seagreen",
             "firebrick","darkred","tomato","orangered",
@@ -28,12 +16,66 @@ colors <- c("deepskyblue1","navyblue","royalblue1","skyblue",
             "darkorchid","darkslateblue","purple3",
             "yellow","gold","khaki1","lightgoldenrod1")
 
+#dp: difference, gap at the ends of the scale
 
-#### Openness to change
 
+#### Openness to change - RAW data
+otctrends <- E %>% group_by(cntry,essround) %>% summarise(meanOTC =mean(OTC,na.rm=T))
+v <- otctrends
+colnames(v) <- c("cntry","essround","m")
+vmin <- round(min(v$m,na.rm=T) - dp*(max(v$m,na.rm=T)-min(v$m,na.rm=T)),1)
+vmax <- round(max(v$m,na.rm=T) + dp*(max(v$m,na.rm=T)-min(v$m,na.rm=T)),1)
+par(mar=c(8.1, 2.1, 1.1, 0.5), mgp=c(2, 0.5, 0))
+plot(v$essround,v$m,
+     type="l", lwd=3,ylim=c(vmin,vmax), col="white",
+     axes=F,
+     ylab="",xlab="")
+axis(side=1,at=seq(1,9,by=1),tck=-0.03,cex.axis=0.75)
+axis(side=2,at=seq(vmin,vmax,by=0.1),tck=-0.02,cex.axis=0.75,las=1,pos=0.7)
+for (i in 1:25) {
+  lines(subset(v,cntry==CNTRYlistv2[i])$essround,
+        subset(v,cntry==CNTRYlistv2[i])$m, 
+        type="l",lwd=3,col=colors[i])
+}
+legend("bottom",legend=CNTRYlistv2,col=colors,lty=1,
+       lwd=3,bty="n",ncol=8,xpd=T,inset=c(0,-0.39))
+dev.copy(jpeg,"OTCtrends.jpeg",width=640,height=400, quality=100)
+dev.off()
+v$m <- round(v$m,3)
+write.table(v,"otctrends.txt")
+
+
+
+
+
+
+
+
+#### Openness to change - ipsatized
 ipotctrends <- E %>% group_by(cntry,essround) %>% summarise(meanOTC =mean(ipOTC,na.rm=T))
-otctrends
-ipotctrends
+v <- ipotctrends
+colnames(v) <- c("cntry","essround","m")
+vmin <- round(min(v$m,na.rm=T) - dp*(max(v$m,na.rm=T)-min(v$m,na.rm=T)),1)
+vmax <- round(max(v$m,na.rm=T) + dp*(max(v$m,na.rm=T)-min(v$m,na.rm=T)),1)
+par(mar=c(8.1, 2.1, 1.1, 0.5), mgp=c(2, 0.5, 0))
+plot(v$essround,v$m,
+     type="l", lwd=3,ylim=c(vmin,vmax), col="white",
+     axes=F,
+     ylab="",xlab="")
+axis(side=1,at=seq(1,9,by=1),tck=-0.03,cex.axis=0.75)
+axis(side=2,at=seq(vmin,vmax,by=0.1),tck=-0.02,cex.axis=0.75,las=1,pos=0.7)
+for (i in 1:25) {
+  lines(subset(v,cntry==CNTRYlistv2[i])$essround,
+        subset(v,cntry==CNTRYlistv2[i])$m, 
+        type="l",lwd=3,col=colors[i])
+}
+legend("bottom",legend=CNTRYlistv2,col=colors,lty=1,
+       lwd=3,bty="n",ncol=8,xpd=T,inset=c(0,-0.39))
+dev.copy(jpeg,"OTCtrends.jpeg",width=640,height=400, quality=100)
+dev.off()
+v$m <- round(v$m,3)
+write.table(v,"otctrends.txt")
+
 
 #write.table(otctrends,"otctrends.txt")
 
