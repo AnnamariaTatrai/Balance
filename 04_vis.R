@@ -1,7 +1,7 @@
 library(tidyverse)
 setwd("C:/Panni/IPSDS/_BalanceThesis/Balance/data/plots")
 
-#we prepared a county list taking region into account
+#we prepared a county list taking region into account 3
 
 CNTRYlistv2 <- c("FI","SE","NO","DK",
                  "FR","GB","IE","BE","NL",
