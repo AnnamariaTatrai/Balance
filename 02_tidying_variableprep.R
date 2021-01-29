@@ -81,6 +81,8 @@ round(table(E[E$dropS==1,]$cntry,E[E$dropS==1,]$essround) / table(E$cntry,E$essr
 
 ## final n-s
 
+table(E[E$dropS==0 & E$dropM==0,]$cntry,E[E$dropS==0 & E$dropM==0,]$essround)
+
 fn <- as.data.frame(table(E[E$dropS==0 & E$dropM==0,]$cntry,E[E$dropS==0 & E$dropM==0,]$essround))
 fn
 setwd("C:/Panni/IPSDS/_BalanceThesis/Balance/data/plots")
@@ -120,6 +122,7 @@ E$STR <- rowMeans(E[i21str],na.rm=T)
 #selfdim 'Max Self-enhancement = -5, Max Self-trancendence = 5'.
 E$O <- E$OTC - E$CON
 E$S <- E$STR - E$SEN
+# this comes from SCHWARTZ
 
 
 E$POW = rowMeans(E[c("imprich", "iprspot")])
@@ -147,8 +150,7 @@ E$SEC = rowMeans(E[c("impsafe", "ipstrgv")])
 ####### ipsatizing
 # mrat 
 E$mrat <- rowMeans(E[i21],na.rm=T)
-
-summary(E$mrat)
+#summary(E$mrat)
 
 
 E$ipOTC <- rowMeans(E[i21otc],na.rm=T) - E$mrat
@@ -186,3 +188,6 @@ CNTRYlistv1 <- c("BE", "CH", "DE", "ES", "FI", "FR", "GB", "HU", "IE", "NL", "NO
 # EE - Estonia, IT - Italy, LT - Lithuania, SK - Slovakia, UA -Ukraine
 
 # In one step I read in data + select relevant observations based on variabel cntry
+
+#happy
+E$happy
