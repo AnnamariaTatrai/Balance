@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611794568313.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8E14C3EF",
+    "lastKnownWriteTime" : 1612105665,
+    "last_content_update" : 1612105665,
+    "path" : "~/R/Rprojects/Balance/01_dataprep.R",
+    "project_path" : "01_dataprep.R",
+    "properties" : {
+        "cursorPosition" : "8,6",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
