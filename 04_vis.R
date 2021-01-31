@@ -9,12 +9,20 @@ CNTRYlistv2 <- c("FI","SE","NO","DK",
                  "PL","HU","SK","CZ","SI",
                  "CH","DE","AT",
                  "ES","PT","IT","CY")
-colors <- c("deepskyblue1","navyblue","royalblue1","skyblue",
-            "yellowgreen","green","darkgreen","lawngreen","seagreen",
-            "firebrick","darkred","tomato","orangered",
-            "coral","darksalmon","orange","orange3","sienna1",
-            "darkorchid","darkslateblue","purple3",
-            "yellow","gold","khaki1","lightgoldenrod1")
+colors <- c("navy","blue3"," dodgerblue1","steeleblue2",
+            "darkgreen","forrestgreen","limegreen","lawngreen","mediumseagreen",
+            "firebrick4","firebrick3"," firebrick1","orangered1",
+            "lightcyan4","lightcyan3","lightcyan2","azure4","azure3",
+            "magenta4","magenta2","orchid2",
+            "yellow","gold1"," goldenrod2"," darkorange")
+
+#gS <- c("FI","SE","NO","DK")         #Scandinavian countries
+#gW <- c(„FR","GB","IE","BE","NL")    #west European countries
+#gE <- c(„"UA","BG","LT","EE")        #east European countries
+#gCE <- c("PL","HU","SK","CZ","SI")   #central east European countries
+#gC <- c("CH","DE","AT")              #central European countries
+#gM <-c("ES","PT","IT","CY")          #Mediterranean countries
+
 
 #dp: difference, gap at the ends of the scale
 
