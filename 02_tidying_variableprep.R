@@ -69,7 +69,8 @@ round(table(E[E$dropS==1,]$cntry,E[E$dropS==1,]$essround) / table(E$cntry,E$essr
 
 table(E[E$dropS==1,]$cntry,E[E$dropS==1,]$essround) + table(E[E$dropM==1,]$cntry,E[E$dropM==1,]$essround)
 
-
+### table with the final n-s
+table(E[E$dropS==0&E$dropM==0,]$cntry,E[E$dropS==1&E$dropM==0,]$essround) 
 
 
 #Rates per country per ESSround
@@ -77,6 +78,15 @@ table(E[E$dropS==1,]$cntry,E[E$dropS==1,]$essround) + table(E[E$dropM==1,]$cntry
 round(table(E[E$dropS==1,]$cntry,E[E$dropS==1,]$essround) / table(E$cntry,E$essround),3) +
   round(table(E[E$dropM==1,]$cntry,E[E$dropM==1,]$essround) / table(E$cntry,E$essround),3)
 
+
+## final n-s
+
+table(E[E$dropS==0 & E$dropM==0,]$cntry,E[E$dropS==0 & E$dropM==0,]$essround)
+
+fn <- as.data.frame(table(E[E$dropS==0 & E$dropM==0,]$cntry,E[E$dropS==0 & E$dropM==0,]$essround))
+fn
+setwd("C:/Panni/IPSDS/_BalanceThesis/Balance/data/plots")
+write.table(fn,"FinalNs.txt")
 
 # checking the distribution again
 apply(E[i21],2,table,useNA="always")
@@ -107,6 +117,13 @@ E$CON <- rowMeans(E[i21con],na.rm=T)
 E$SEN <- rowMeans(E[i21sen],na.rm=T)
 E$STR <- rowMeans(E[i21str],na.rm=T)
 
+# opendim and selfdim
+#opendim 'Max Conservation = -5, Max Openness to change = 5'
+#selfdim 'Max Self-enhancement = -5, Max Self-trancendence = 5'.
+E$O <- E$OTC - E$CON
+E$S <- E$STR - E$SEN
+# this comes from SCHWARTZ
+
 
 E$POW = rowMeans(E[c("imprich", "iprspot")])
 E$ACH = rowMeans(E[c("ipshabt", "ipsuces")])
@@ -133,8 +150,7 @@ E$SEC = rowMeans(E[c("impsafe", "ipstrgv")])
 ####### ipsatizing
 # mrat 
 E$mrat <- rowMeans(E[i21],na.rm=T)
-
-summary(E$mrat)
+#summary(E$mrat)
 
 
 E$ipOTC <- rowMeans(E[i21otc],na.rm=T) - E$mrat
@@ -159,7 +175,7 @@ E$ipSEC = rowMeans(E[c("impsafe", "ipstrgv")]) - E$mrat
 
 ### country selection 
 # countries participating all years
-#CNTRYlistv1 <- c("BE", "CH", "DE", "ES", "FI", "FR", "GB", "HU", "IE", "NL", "NO", "PL", "PT", "SE", "SI")
+CNTRYlistv1 <- c("BE", "CH", "DE", "ES", "FI", "FR", "GB", "HU", "IE", "NL", "NO", "PL", "PT", "SE", "SI")
 # european countries participating at least 5 years
 # added: Austria, Bulgaria, Cyprus, Czechia,Denmark, Estonia, Italy, Lithuania, Slovakia, Ukraine
 #CNTRYlistv2 <- c("AT","BE","BG" ,"CH", "CY","CZ", "DE","DK", "EE","ES", "FI", "FR", "GB", "HU", "IE","IT","LT", "NL", "NO", "PL", "PT", "SE", "SI","SK","UA")
@@ -172,3 +188,6 @@ E$ipSEC = rowMeans(E[c("impsafe", "ipstrgv")]) - E$mrat
 # EE - Estonia, IT - Italy, LT - Lithuania, SK - Slovakia, UA -Ukraine
 
 # In one step I read in data + select relevant observations based on variabel cntry
+
+#happy
+E$happy

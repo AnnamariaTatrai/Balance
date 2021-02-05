@@ -4,6 +4,81 @@ author: "Elisabeth Linek, Annamaria Tatrai, Heidi Wayment"
 date: '2021 01 28 '
 output: html_document
 ---
+```{r,includ=F}
+#save.image(file='tempenv.RData')
+load("tempenv.Rdata")
+
+#important code to show
+
+# opendim and selfdim
+#opendim 'Max Conservation = -5, Max Openness to change = 5'
+#selfdim 'Max Self-enhancement = -5, Max Self-trancendence = 5'.
+E$O <- E$OTC - E$CON
+E$S <- E$STR - E$SEN
+
+
+E$POW = rowMeans(E[c("imprich", "iprspot")])
+E$ACH = rowMeans(E[c("ipshabt", "ipsuces")])
+E$HED = rowMeans(E[c("impfun", "ipgdtim")])
+E$STI = rowMeans(E[c("impdiff", "ipadvnt")])
+E$SEL  =rowMeans(E[c("ipcrtiv", "impfree")])
+E$UNI = rowMeans(E[c("ipeqopt", "ipudrst", "impenv")])
+E$BEN = rowMeans(E[c("iphlppl", "iplylfr")])
+E$TRA = rowMeans(E[c("ipmodst", "imptrad")])
+E$CON = rowMeans(E[c("ipbhprp", "ipfrule")])
+E$SEC = rowMeans(E[c("impsafe", "ipstrgv")])
+
+####### ipsatizing
+# mrat 
+E$mrat <- rowMeans(E[i21],na.rm=T)
+#summary(E$mrat)
+
+
+E$ipOTC <- rowMeans(E[i21otc],na.rm=T) - E$mrat
+E$ipCON <- rowMeans(E[i21con],na.rm=T) - E$mrat
+E$ipSEN <- rowMeans(E[i21sen],na.rm=T) - E$mrat
+E$ipSTR <- rowMeans(E[i21str],na.rm=T) - E$mrat
+
+
+E$ipPOW = rowMeans(E[c("imprich", "iprspot")]) - E$mrat
+E$ipACH = rowMeans(E[c("ipshabt", "ipsuces")]) - E$mrat
+E$ipHED = rowMeans(E[c("impfun", "ipgdtim")]) - E$mrat
+E$ipSTI = rowMeans(E[c("impdiff", "ipadvnt")]) - E$mrat
+E$ipSEL  =rowMeans(E[c("ipcrtiv", "impfree")])- E$mrat
+E$ipUNI = rowMeans(E[c("ipeqopt", "ipudrst", "impenv")]) - E$mrat
+E$ipBEN = rowMeans(E[c("iphlppl", "iplylfr")]) - E$mrat
+E$ipTRA = rowMeans(E[c("ipmodst", "imptrad")]) - E$mrat
+E$ipCON = rowMeans(E[c("ipbhprp", "ipfrule")]) - E$mrat
+E$ipSEC = rowMeans(E[c("impsafe", "ipstrgv")]) - E$mrat
+
+```
+
+
+
+# Reliability measures
+
+## Openness to change
+```{r}
+knitr::kable(caotc)
+```
+
+
+## Conservation
+```{r}
+knitr::kable(cacon)
+```
+
+
+## Self-transcendence
+```{r}
+knitr::kable(castr)
+```
+
+## Self-enhancement
+```{r}
+knitr::kable(casen)
+```
+
 
 # Improved plots
 We changed the colors in order to have an impression abouot regional differences.
@@ -14,13 +89,73 @@ Finland, Sweden, Norway, Denmark 			 blue
 
 **Western europe:** 
 France, Ireland, GB, Belgium, Netherlands	green
+
+
 **East:** Ukraine, Bulgaria, Lithuania, Estonia, Russia			- red
+
+
 **Central East:** Czechia, Poland, Slovakia, Hungary, Slovenia	- orange
+
+
 **Central:** Switzerland, Germany, Austria				- lila/purple
+
+
 **Mediteranean:** - Spain, Portugal, Italy, Greece, Cyprus		- yellow (dark yellow
 
 ## Openness to change
 ### Raw data
-![](otctrends.txt)
-![](OTCtrends.jpeg)
+![otctrends.txt](otctrends.txt)
+![(OTCtrends.jpeg](OTCtrends.jpeg)
+
+
+
+
+
 ### Ipsatized data
+![ipotctrends.txt](ipotctrends.txt)
+![(ipOTCtrends.jpeg](ipOTCtrends.jpeg)
+
+
+
+## Openness dimension (Openness to change - conservation)
+![otrends.txt](otrends.txt)
+![(Otrends.jpeg](Otrends.jpeg)
+
+
+
+## Self-enhancement
+### Raw data
+![sentrends.txt](sentrends.txt)
+![(SENtrends.jpeg](SENtrends.jpeg)
+
+
+
+### Ipsatized data
+![ipsentrends.txt](ipsentrends.txt)
+![(ipSENtrends.jpeg](ipSENtrends.jpeg)
+
+
+
+
+
+
+## Self-transcendence
+
+
+
+### Raw data
+![strtrends.txt](strtrends.txt)
+![(STRtrends.jpeg](STRtrends.jpeg)
+
+
+
+### Ipsatized data
+![ipstrtrends.txt](ipsentrends.txt)
+![(ipSTRtrends.jpeg](ipSTRtrends.jpeg)
+
+## Self-transcendence vs self-enhancement dimension
+![strends.txt](strends.txt)
+![(Strends.jpeg](Strends.jpeg)
+
+
+
