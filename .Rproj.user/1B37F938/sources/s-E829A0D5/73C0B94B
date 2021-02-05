@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1612105691988.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1914393456",
+    "id" : "73C0B94B",
+    "lastKnownWriteTime" : 1612109224,
+    "last_content_update" : 1612109224993,
+    "path" : "~/R/Rprojects/Balance/04_vis.R",
+    "project_path" : "04_vis.R",
+    "properties" : {
+        "cursorPosition" : "21,67",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

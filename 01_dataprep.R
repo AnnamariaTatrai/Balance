@@ -6,7 +6,7 @@ library(tidyverse) #for everything else :)
 # I went for expss package, since it returns data.frame and never concerts string variables to factors
 # (factors + labels caused problems by adding waves since different waves have different labels, levels)
 
-# 2032.01.15: we decided to use 
+# 2021.01.15: we decided to use 
 
 
 setwd("C:/Panni/IPSDS/_BalanceThesis/Balance/original")
