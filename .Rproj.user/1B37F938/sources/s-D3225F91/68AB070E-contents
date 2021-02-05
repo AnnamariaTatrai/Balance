@@ -1,0 +1,26 @@
+---
+title: "Balance_thesis_20210129"
+author: "Elisabeth Linek, Annamaria Tatrai, Heidi Wayment"
+date: '2021 01 28 '
+output: html_document
+---
+
+# Improved plots
+We changed the colors in order to have an impression about regional differences.
+
+**Scandinavian:** 
+Finland, Sweden, Norway, Denmark 			 blue
+
+
+**Western europe:** 
+France, Ireland, GB, Belgium, Netherlands	green
+**East:** Ukraine, Bulgaria, Lithuania, Estonia, Russia			- red
+**Central East:** Czechia, Poland, Slovakia, Hungary, Slovenia	- orange
+**Central:** Switzerland, Germany, Austria				- lila/purple
+**Mediteranean:** - Spain, Portugal, Italy, Greece, Cyprus		- yellow (dark yellow
+
+## Openness to change
+### Raw data
+![](otctrends.txt)
+![](OTCtrends.jpeg)
+### Ipsatized data
